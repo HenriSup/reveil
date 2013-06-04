@@ -63,8 +63,17 @@ function getWakeUp(){
 	timestamp2 = getDateTime('leve');
 	gap = getGapBetweenTwoTimestamp(timestamp1, timestamp2);
 	cycleNumber = getCycleNumber(gap);
-	console.log (cycleNumber);
-	alert(getWakeUpDateTime(timestamp1,cycleNumber,cycleTime));
+	console.log(cycleNumber);
+
+	wakeUpTime = getWakeUpDateTime(timestamp1,gap,cycleNumber,cycleTime);
+	console.log(wakeUpTime);
+		$('#countdown').countdown({
+		timestamp	: wakeUpTime,
+		callback	: function(days, hours, minutes, seconds){
+			
+		}
+	});
+
 
 }
 

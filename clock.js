@@ -1,5 +1,5 @@
-cycleTime = 5400;
-
+cycleTime = 5400*1000;
+jetLag = 2*60*60*1000;
 
 
 
@@ -21,7 +21,7 @@ function getDateTime (selector)
 {
 	dateTime = $('#'+selector).val();
 	date = new Date(dateTime);
-	return date.getTime()/1000;
+	return date.getTime();
 }
 
 
@@ -37,9 +37,9 @@ function getCycleNumber(gap)
 }
 
 
-function getWakeUpDateTime(timestamp1,cycleNumber,cycleTime)
+function getWakeUpDateTime(timestamp,gap,cycleNumber,cycleTime)
 {
-	return timestamp1+(cycleNumber*cycleTime);
+	return (timestamp+gap+(cycleNumber*cycleTime)) - jetLag;
 
 }
 
