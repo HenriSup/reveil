@@ -36,19 +36,15 @@ $('#leve').datetimepicker({
 });
 
 
+
 function getWakeUp(){
 
-
-
 	timestamp1 = getDateTime('couche');
-	console.log (timestamp1);
 	timestamp2 = getDateTime('leve');
-	console.log (timestamp2);
 	gap = getGapBetweenTwoTimestamp(timestamp1, timestamp2);
-	console.log (gap);
 	cycleNumber = getCycleNumber(gap);
-	console.log (cycleNumber/1000);
-	return getWakeUpDateTime(timestamp1,cycleNumber,cycleTime);
+	console.log (cycleNumber);
+	alert(getWakeUpDateTime(timestamp1,cycleNumber,cycleTime));
 
 }
 

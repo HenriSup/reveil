@@ -21,7 +21,7 @@ function getDateTime (selector)
 {
 	dateTime = $('#'+selector).val();
 	date = new Date(dateTime);
-	return date.getTime();
+	return date.getTime()/1000;
 }
 
 
@@ -39,7 +39,7 @@ function getCycleNumber(gap)
 
 function getWakeUpDateTime(timestamp1,cycleNumber,cycleTime)
 {
-	timestamp1+(cycleNumber*cycleTime)
+	return timestamp1+(cycleNumber*cycleTime);
 
 }
 
