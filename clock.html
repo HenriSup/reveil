@@ -6,11 +6,12 @@
 		<link href="clock.css" rel="stylesheet" type="text/css"/>
 		<link href="jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css"/>
 		<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="css/flipclock.css">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"> </script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js">  </script>
 		<script type="text/javascript" src="jquery-ui-timepicker-addon.js">  </script>
-		<script type="text/javascript" src="clock.js">  </script>
+
 
 	</head>
 
@@ -18,10 +19,20 @@
 <body>
 
 
+
+
+<div style="float:right" ; width : 200px; height:100px;>
 <input type="text" name="couche" id="couche" />
 <input type="text" name="leve" id="leve" />
-
 <button onclick="getWakeUp()">lancer fonction getWakeUp</button>
+
+</div>
+
+<div class="your-clock"></div>
+
+		<script type="text/javascript" src="clock.js">  </script>
+		<script type="text/javascript" src="js/flipclock/libs/prefixfree.min.js"></script>
+		<script type="text/javascript" src="js/flipclock/flipclock.min.js"></script>
 
 <script type="text/javascript">
 
@@ -48,9 +59,15 @@ function getWakeUp(){
 
 }
 
+var clock = $('.your-clock').FlipClock({
+// ... your options here
+});
+clock.setTime(3600);
 
 
 </script>
+
+
 
 </body>
 </html>
