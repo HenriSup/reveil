@@ -1,0 +1,61 @@
+<html>
+
+<head>
+
+
+<link href="clock.css" rel="stylesheet" type="text/css"/>
+<link href="jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css"/>
+<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"> </script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js">  </script>
+<script type="text/javascript" src="jquery-ui-timepicker-addon.js">  </script>
+<script type="text/javascript" src="clock.js">  </script>
+
+</head>
+
+
+<body>
+
+
+<input type="text" name="couche" id="couche" />
+<input type="text" name="leve" id="leve" />
+
+<button onclick="getWakeUp()">lancer fonction getWakeUp</button>
+
+<script type="text/javascript">
+
+$('#couche').datetimepicker({
+	timeFormat: "hh:mm tt"
+});
+
+
+$('#leve').datetimepicker({
+	timeFormat: "hh:mm tt"
+});
+
+
+
+
+
+
+function getWakeUp(){
+
+
+	timestamp1 = getDateTime('couche');
+	console.log (timestamp1);
+	timestamp2 = getDateTime('leve');
+	console.log (timestamp2);
+	gap = getGapBetweenTwoTimestamp(timestamp1, timestamp2);
+	console.log (gap);
+	cycleNumber = getCycleNumber(gap);
+	console.log (cycleNumber/1000);
+	return getWakeUpDateTime(timestamp1,cycleNumber,cycleTime);
+
+}
+
+
+
+</script>
+
+</body>
