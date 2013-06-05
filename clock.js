@@ -12,7 +12,7 @@ gap = getGapBetweenTwoTimestamp(timestamp1, timestamp2);
 
 cycleNumber = getCycleNumber(gap);
 
-wakeUpDateTime = getWakeUpDateTime(timestamp1, cycleNumber, cycleTime)
+wakeUpDateTime = getWakeUpDateTime(timestamp1, cycleNumber, cycleTime);
 
 
 
@@ -37,10 +37,13 @@ function getCycleNumber(gap)
 }
 
 
-function getWakeUpDateTime(timestamp,gap,cycleNumber,cycleTime)
+function getWakeUpDateTime(timestamp,cycleNumber,cycleTime)
 {
-	return (timestamp+gap+(cycleNumber*cycleTime)) - jetLag;
+	return (timestamp1+(cycleNumber*cycleTime)) ;
 
+	}
+
+function numcycle()
+{
+document.cycy.ch1.value=cycleNumber; 
 }
-
-

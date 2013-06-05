@@ -26,17 +26,30 @@
 
 <body>
 
-<div id="countdown"></div>
+<center><div class="bouton"> <d href="#">.</d></center></div>
+
+
+<h1><div id="countdown"></div></h1></center>
 
 		<p id="note"></p>
 
 
+<TABLE><TR><th><div class="bouton"><a href="#">.</a></div></TH> </TR>
+<TR><th><input type="text" name="couche" id="couche" /></TH> </TR>
 
-<input type="text" name="couche" id="couche" />
-<input type="text" name="leve" id="leve" />
-<button onclick="getWakeUp()">lancer fonction getWakeUp</button>
+<TR><th><div class="bouton"><b href="#">.</b></div></TH> </TR>
 
+<TR><th><input type="text" name="leve" id="leve" /></TH> </TR>
 
+<TR><th><button onclick="getWakeUp() ; numcycle() ">  Lancer le calcul   </button></TH> </TR>
+
+</TABLE>
+
+<h3>
+<form NAME="cycy">
+<center><INPUT disabled="true" TYPE="text" NAME="ch1" size=20  style="background-color:transparent ; border: none ;text-align:center "></center>
+</form>
+</h3>
 
 
 
@@ -44,6 +57,7 @@
 		
 
 <script type="text/javascript">
+
 
 
 $('#couche').datetimepicker({
@@ -65,7 +79,7 @@ function getWakeUp(){
 	cycleNumber = getCycleNumber(gap);
 	console.log(cycleNumber);
 
-	wakeUpTime = getWakeUpDateTime(timestamp1,gap,cycleNumber,cycleTime);
+	wakeUpTime = getWakeUpDateTime(timestamp1,cycleNumber,cycleTime);
 	console.log(wakeUpTime);
 		$('#countdown').countdown({
 		timestamp	: wakeUpTime,
@@ -80,10 +94,16 @@ function getWakeUp(){
 
 
 
+	 
+
+
+
+
 </script>
 
 		<script src="assets/countdown/jquery.countdown.js"></script>
 		<script src="assets/js/script.js"></script>
+
 
 
 </body>
