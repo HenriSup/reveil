@@ -1,110 +1,131 @@
 <html>
 
-	<head>
+<head>
 
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />
-        <link rel="stylesheet" href="assets/css/styles.css" />
-        <link rel="stylesheet" href="assets/countdown/jquery.countdown.css" />
-        
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />
+	<link rel="stylesheet" href="assets/css/styles.css" />
+	<link rel="stylesheet" href="assets/countdown/jquery.countdown.css" />
+
         <!--[if lt IE 9]>
           <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+          <![endif]-->
 
-		<link href="./clock.css" rel="stylesheet" type="text/css"/>
-		<link href="./jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css"/>
-		<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
-	
-
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"> </script>
-		<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js">  </script>
-		<script type="text/javascript" src="jquery-ui-timepicker-addon.js">  </script>
+          <link href="./clock.css" rel="stylesheet" type="text/css"/>
+          <link href="./jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css"/>
+          <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
 
-
-	</head>
-
-
-<body>
-
-<center><div class="bouton"> <d href="#">.</d></center></div>
-
-
-<h1><div id="countdown"></div></h1></center>
-
-		<p id="note"></p>
-
-
-<TABLE><TR><th><div class="bouton"><a href="#">.</a></div></TH> </TR>
-<TR><th><input type="text" name="couche" id="couche" /></TH> </TR>
-
-<TR><th><div class="bouton"><b href="#">.</b></div></TH> </TR>
-
-<TR><th><input type="text" name="leve" id="leve" /></TH> </TR>
-
-<TR><th><button onclick="getWakeUp() ; numcycle() ">  Lancer le calcul   </button></TH> </TR>
-
-</TABLE>
-
-<h3>
-<form NAME="cycy">
-<center><INPUT disabled="true" TYPE="text" NAME="ch1" size=20  style="background-color:transparent ; border: none ;text-align:center "></center>
-</form>
-</h3>
+          <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"> </script>
+          <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js">  </script>
+          <script type="text/javascript" src="jquery-ui-timepicker-addon.js">  </script>
+          <script type="text/javascript" src="./js/buzz.js">  </script>
 
 
 
-		<script type="text/javascript" src="clock.js">  </script>
-		
-
-<script type="text/javascript">
+      </head>
 
 
+      <body>
 
-$('#couche').datetimepicker({
-	timeFormat: "hh:mm tt"
-});
-
-
-$('#leve').datetimepicker({
-	timeFormat: "hh:mm tt"
-});
+      	<center><div class="bouton"> <d href="#">.</d></center></div>
 
 
+      	<h1><div id="countdown"></div></h1></center>
 
-function getWakeUp(){
-
-	timestamp1 = getDateTime('couche');
-	timestamp2 = getDateTime('leve');
-	gap = getGapBetweenTwoTimestamp(timestamp1, timestamp2);
-	cycleNumber = getCycleNumber(gap);
-	console.log(cycleNumber);
-
-	wakeUpTime = getWakeUpDateTime(timestamp1,cycleNumber,cycleTime);
-	console.log(wakeUpTime);
-		$('#countdown').countdown({
-		timestamp	: wakeUpTime,
-		callback	: function(days, hours, minutes, seconds){
-			
-		}
-	});
+      	<p id="note"></p>
 
 
-}
+      	<TABLE><TR><th><div class="bouton"><a href="#">.</a></div></TH> </TR>
+      		<TR><th><input type="text" name="couche" id="couche" /></TH> </TR>
+
+      		<TR><th><div class="bouton"><b href="#">.</b></div></TH> </TR>
+
+      		<TR><th><input type="text" name="leve" id="leve" /></TH> </TR>
+
+      		<TR><th><button onclick="getWakeUp() ; numcycle() ">  Lancer le calcul   </button></TH> </TR>
+
+      	</TABLE>
+
+      	<h3>
+      		<form NAME="cycy">
+      			<center><INPUT disabled="true" TYPE="text" NAME="ch1" size=20  style="background-color:transparent ; border: none ;text-align:center "></center>
+      		</form>
+      	</h3>
+
+      	<div id="stopReveil" onclick="mySound.stop()" style="display:none; background-color:red; height:100px;width:300px;text-align:center;color:white;font-size: 20px;
+font-weight: bold;" >
+      		Ok je me leve
+      	</div>
+
+      	<script type="text/javascript" src="clock.js">  </script>
 
 
-
-
-	 
+      	<script type="text/javascript">
 
 
 
-
-</script>
-
-		<script src="assets/countdown/jquery.countdown.js"></script>
-		<script src="assets/js/script.js"></script>
+      	$('#couche').datetimepicker({
+      		timeFormat: "hh:mm tt"
+      	});
 
 
+      	$('#leve').datetimepicker({
+      		timeFormat: "hh:mm tt"
+      	});
 
-</body>
-</html>
+      	var mySound;
+      	soundPlay = false;
+
+
+      	function getWakeUp(){
+      		timestamp1 = getDateTime('couche');
+      		timestamp2 = getDateTime('leve');
+      		gap = getGapBetweenTwoTimestamp(timestamp1, timestamp2);
+      		cycleNumber = getCycleNumber(gap);
+      		console.log(cycleNumber);
+
+      		wakeUpTime = getWakeUpDateTime(timestamp1,cycleNumber,cycleTime);
+      		console.log(wakeUpTime);
+      		$('#countdown').countdown({
+      			timestamp	: wakeUpTime,
+      			callback	: function(days, hours, minutes, seconds){
+      				if (days == 0 && hours == 0 && minutes == 0 && seconds == 0){
+
+      					if(!soundPlay){
+      						mySound = new buzz.sound( "reveil", {
+      							formats: [ "ogg", "mp3", "acc" ]
+      						});
+      						mySound.play()
+      						.fadeIn()
+      						.loop()
+      						.bind( "timeupdate", function() {
+      							var timer = buzz.toTimer( this.getTime() );      						
+      						});	
+      						soundPlay = true;
+      						$('#stopReveil').show();
+      					}
+      					
+      				}
+      			}
+      		});
+
+
+      	}
+
+
+
+
+
+
+
+
+
+      	</script>
+
+      	<script src="assets/countdown/jquery.countdown.js"></script>
+      	<script src="assets/js/script.js"></script>
+
+
+
+      </body>
+      </html>
